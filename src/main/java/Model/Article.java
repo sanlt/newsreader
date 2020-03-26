@@ -10,6 +10,7 @@ public class Article {
     private String title;
     private String description;
     private String publishedAt;
+    private String content;
 
     public Article(JsonObject article) {
         this.sourceName = article.get("source").getAsJsonObject().get("name").getAsString();
@@ -21,6 +22,7 @@ public class Article {
         this.title = article.get("title").getAsString();
         this.description = article.get("description").getAsString();
         this.publishedAt = article.get("publishedAt").getAsString();
+        this.content = article.get("content").getAsString();
     }
 
     public void printArticle() {
@@ -29,6 +31,7 @@ public class Article {
         System.out.println(title);
         System.out.println(description);
         System.out.println(publishedAt);
+        System.out.println(content);
 
         System.out.println();
     }
