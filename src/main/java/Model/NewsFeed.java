@@ -10,15 +10,15 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Newsfeed {
+public class NewsFeed {
 
   private JsonElement jse;
 
-  public Newsfeed(){
+  public NewsFeed(){
     try {
       URL newsURL;
 
-      newsURL = new URL("http://newsapi.org/v2/everything?q=bitcoin&from=2020-02-26&sortBy=publishedAt&apiKey=API_KEY" + ApiKey.apiKey);
+      newsURL = new URL("http://newsapi.org/v2/everything?q=bitcoin&from=2020-02-26&sortBy=publishedAt&apiKey=" + ApiKey.apiKey);
       System.out.println(newsURL);
 
       // Encode given URL -- could throw UnsupportedEncodingException
@@ -40,4 +40,17 @@ public class Newsfeed {
       e.printStackTrace();
     }
   }
+
+  public String getTitle(int i){
+    return jse.getAsJsonObject().get("articles").getAsJsonArray().get(i).getAsJsonObject().get("description").getAsString();
+  }
+
+  public static void main(String [] args)
+	{
+		NewsFeed x = new NewsFeed();
+		System.out.println(x.getTitle(0));
+
+	}
+
+
 }
